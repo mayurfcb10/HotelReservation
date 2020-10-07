@@ -16,9 +16,9 @@ public class HotelReservation {
 	}
 
 	public void addHotelDetails() {
-		hotelList.add(new Hotel("Lakewood", 110));
-		hotelList.add(new Hotel("Bridgewood", 150));
-		hotelList.add(new Hotel("Ridgewood", 220));
+		hotelList.add(new Hotel("Lakewood", 110, 90));
+		hotelList.add(new Hotel("Bridgewood", 150, 50 ));
+		hotelList.add(new Hotel("Ridgewood", 220, 150));
 	}
 
 
