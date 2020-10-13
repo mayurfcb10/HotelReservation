@@ -14,6 +14,7 @@ public class HotelReservation {
 	long totalDays;
 	long weekDays;
 	long weekendDays;
+	int rating;
 
 	public void printWelcomeMessage() {
 		System.out.println("Welcome to the Hotel Reservation Program");
@@ -37,6 +38,10 @@ public class HotelReservation {
 		count = daysWithoutWeekends + (startDay == DayOfWeek.SUNDAY ? 1 : 0) + (endDay == DayOfWeek.SUNDAY ? 1 : 0);
 		return count;
 	}
+	
+	public void findMinimumCostHotel() {
+		
+	}
 
 	/* Find cheapest hotel */
 	public ArrayList<String> findCheapestCost(long weekDays, long weekendDays) {
@@ -44,6 +49,7 @@ public class HotelReservation {
 		minCostLakeWood = 0;
 		minCostBridgeWood = 0;
 		minCostRidgeWood = 0;
+		rating = 0;
 		minCostLakeWood = (hotelList.get(0).getRegularRate() * weekDays
 				+ hotelList.get(0).getWeekendRate() * weekendDays);
 		minCostBridgeWood = (hotelList.get(1).getRegularRate() * weekDays
@@ -51,13 +57,19 @@ public class HotelReservation {
 		minCostRidgeWood = (hotelList.get(2).getRegularRate() * weekDays
 				+ hotelList.get(2).getWeekendRate() * weekendDays);
 		long minCostHotel = Math.min(minCostRidgeWood, Math.min(minCostBridgeWood, minCostLakeWood));
-		if (minCostHotel == minCostLakeWood)
-			hotel.add("LakeWood");
-		if (minCostHotel == minCostBridgeWood)
-			hotel.add("BridgeWood");
-		if (minCostHotel == minCostRidgeWood)
+		if (minCostHotel == minCostRidgeWood && (hotelList.get(2).getHotelRating() > rating)) {
+			rating = hotelList.get(2).getHotelRating();
 			hotel.add("RidgeWood");
-		System.out.println("The minimum cost for Hotel is " + minCostHotel);
+		}
+		if (minCostHotel == minCostBridgeWood && (hotelList.get(1).getHotelRating() > rating)) {
+			rating = hotelList.get(1).getHotelRating();
+			hotel.add("BridgeWood");
+		}
+		if (minCostHotel == minCostLakeWood && (hotelList.get(0).getHotelRating() > rating)) {
+			rating = hotelList.get(0).getHotelRating();
+			hotel.add("LakeWood");
+		}
+		System.out.println("The minimum cost for Hotel is " + minCostHotel + " and rating of hotel is " + rating);
 		return hotel;
 	}
 
