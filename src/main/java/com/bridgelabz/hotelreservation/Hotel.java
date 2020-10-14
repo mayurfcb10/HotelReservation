@@ -7,13 +7,19 @@ public class Hotel {
 	private int hotelRating;
 	private int regularRate;
 	private int weekendRate;
+	private int rewardWeekDayRate;
+	private int rewardWeekendRate;
+	private boolean isRewardee;
 
 	// Parameterized Constructor
-	public Hotel(String hotelName, int hotelRating, int regularRate, int weekendRate) {
+	public Hotel(String hotelName, int hotelRating, int regularRate, int weekendRate, int rewardWeekDayRate,
+			int rewardWeekendRate) {
 		this.hotelName = hotelName;
 		this.hotelRating = hotelRating;
 		this.regularRate = regularRate;
 		this.weekendRate = weekendRate;
+		this.rewardWeekendRate = rewardWeekendRate;
+		this.rewardWeekDayRate = rewardWeekDayRate;
 	}
 
 	// Getter And Setter Methods
@@ -48,4 +54,29 @@ public class Hotel {
 	public void setHotelRating(int hotelRating) {
 		this.hotelRating = hotelRating;
 	}
+
+	public int getRewardWeekDayRate() {
+		return rewardWeekDayRate;
+	}
+
+	public void setRewardWeekDayRate(int rewardWeekDayRate) {
+		this.rewardWeekDayRate = rewardWeekDayRate;
+	}
+
+	public int getRewardWeekendRate() {
+		return rewardWeekendRate;
+	}
+
+	public void setRewardWeekendRate(int rewardWeekendRate) {
+		this.rewardWeekendRate = rewardWeekendRate;
+	}
+	public boolean isRewardee() {
+		return isRewardee;
+	}
+
+	public void setRewardee(boolean isRewardee) {
+		this.isRewardee = isRewardee;
+	}
+
+
 }
