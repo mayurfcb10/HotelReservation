@@ -48,46 +48,57 @@ public class HotelReservationTest {
 		Assert.assertArrayEquals(arrayExpectedOutput, hotelName);
 	}
 
-	/* UC6 Minimum Cost with maximum Ratings on Weekday*/
+	/* UC6 Minimum Cost with maximum Ratings on Weekday */
 	@Test
 	public void givenDate_WeekDayshouldReturn_CheapestHotelNameLakeWood() throws Exception {
-		String hotelName = hotelReservation.findCheapestCostWithMaxRatings("2020-09-14", "2020-09-16");
+		String hotelName = hotelReservation.findCheapestCostWithMaxRatings("2020-09-14", "2020-09-16", false);
 		Assert.assertEquals("LakeWood", hotelName);
 	}
 
 	/* UC6 Minimum Cost with maximum Ratings on Weekend days */
 	@Test
 	public void givenDateWeekend_shouldReturn_CheapestHotelNameBrideWood() throws Exception {
-		String hotelName = hotelReservation.findCheapestCostWithMaxRatings("2020-09-12", "2020-09-13");
+		String hotelName = hotelReservation.findCheapestCostWithMaxRatings("2020-09-12", "2020-09-13", false);
 		Assert.assertEquals("BridgeWood", hotelName);
 	}
 
-	/* UC6 Minimum Cost with maximum Ratings on weekday adn weekend day*/
+	/* UC6 Minimum Cost with maximum Ratings on weekday and weekend day */
 	@Test
 	public void givenDateWeekDayWeekend_shouldReturn_CheapestHotelNameGivesBridgeWood() throws Exception {
-		String hotelName = hotelReservation.findCheapestCostWithMaxRatings("2020-09-11", "2020-09-12");
+		String hotelName = hotelReservation.findCheapestCostWithMaxRatings("2020-09-11", "2020-09-12", false);
 		Assert.assertEquals("BridgeWood", hotelName);
 	}
 
-
-	/* UC7 Cost with maximum Ratings weekday*/
+	/* UC7 Cost with maximum Ratings weekday */
 	@Test
 	public void givenDate_WeekDayshouldReturn_CheapestHotelNameRidgeWood() throws Exception {
 		String hotelName = hotelReservation.calculateCheapestHotelAndRateByRating("2020-09-14", "2020-09-16");
 		Assert.assertEquals("RidgeWood", hotelName);
 	}
 
-	/* UC7 Cost with maximum Ratings weekend*/
+	/* UC7 Cost with maximum Ratings weekend */
 	@Test
 	public void givenDateWeekend_shouldReturn_CheapestHotelNameRidgeeWood() throws Exception {
 		String hotelName = hotelReservation.calculateCheapestHotelAndRateByRating("2020-09-12", "2020-09-13");
 		Assert.assertEquals("RidgeWood", hotelName);
 	}
 
-	/* UC7 Cost with maximum Ratings weekday weekend*/
+	/* UC7 Cost with maximum Ratings weekday weekend */
 	@Test
 	public void givenDateWeekDayWeekend_shouldReturn_CheapestHotelNameGivenBridgeWood() throws Exception {
 		String hotelName = hotelReservation.calculateCheapestHotelAndRateByRating("2020-09-11", "2020-09-12");
+		Assert.assertEquals("RidgeWood", hotelName);
+	}
+	
+	@Test
+	public void givenDateWeekDayWeekendRewardCustomer_shouldReturn_CheapestHotelNameRidgeWood() throws Exception {
+		String hotelName = hotelReservation.findCheapestCostWithMaxRatings("2020-09-11", "2020-09-12", true);
+		Assert.assertEquals("RidgeWood", hotelName);
+	}
+	
+	@Test
+	public void givenDateWeekDayRewardCustomer_shouldReturn_CheapestHotelNameidgeWood() throws Exception {
+		String hotelName = hotelReservation.findCheapestCostWithMaxRatings("2020-10-14", "2020-10-16", true);
 		Assert.assertEquals("RidgeWood", hotelName);
 	}
 
